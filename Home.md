@@ -4,10 +4,10 @@
 
 All Categories:
 
-* Dorms
-* Pilot's Hotel
-* Terminal A
-* Outside
-* Terminal B/C
-* Terminal D
-* Terminal E
+* [Dorms](https://sonic4999.github.io/DHSeason6Archive/Dorms/dorms)
+* [Pilot's Hotel](https://sonic4999.github.io/DHSeason6Archive/Hotel/hotel)
+* [Terminal A](https://sonic4999.github.io/DHSeason6Archive/TerminalA/terminala)
+* [Outside](https://sonic4999.github.io/DHSeason6Archive/Outside/outside)
+* [Terminal B/C](https://sonic4999.github.io/DHSeason6Archive/TerminalBC/terminalbc)
+* [Terminal D](https://sonic4999.github.io/DHSeason6Archive/TerminalD/terminald)
+* [Terminal E](https://sonic4999.github.io/DHSeason6Archive/TerminalE/terminale)
