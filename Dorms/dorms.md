@@ -1,27 +1,27 @@
 # Season 6 - Dorms
 
 All dorms:
-* #🎭aku🎭
-* #🎙alicia-lake🎙
-* #🗡alya-barrion🗡
-* #💀arashi-harikēn💀
-* #❓athy-wondercrest❓
-* #📷axel-caron📷
-* #💰ayako-katsumi💰
-* #📚chizue-okamoto📚
-* #📈elizabeth-walker📈
-* #🎞kaeru-sasaki🎞
-* #🍔kasumi-sato🍔
-* #👊kichiro-ryu👊
-* #🎪mavis-locks🎪
-* #🎾mayumi-takimura🎾
-* #🧾ren-mitsurubi🧾
-* #🎸ryōhō-rokkunrōru🎸
-* #✅shinjitsu-shika✅
-* #🔎shitzu-rios🔎
-* #🏩ursa-lovelocke🏩
-* #🧛victor-ogden🧛
-* #👘yasumi-namajimi👘
-* #☀yoshimura-tomatsu☀
+* [#🎭aku🎭](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%8E%ADaku%F0%9F%8E%AD%20[775364221516513325].html)
+* [#🎙alicia-lake🎙](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%8E%99alicia-lake%F0%9F%8E%99%20[775363113440116757].html)
+* [#🗡alya-barrion🗡](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%97%A1alya-barrion%F0%9F%97%A1%20[775363289185517568].html)
+* [#💀arashi-harikēn💀](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%92%80arashi-harik%C4%93n%F0%9F%92%80%20[775362920350613504].html)
+* [#❓athy-wondercrest❓](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%E2%9D%93athy-wondercrest%E2%9D%93%20[775364114699780107].html)
+* [#📷axel-caron📷](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%93%B7axel-caron%F0%9F%93%B7%20[775363174647988274].html)
+* [#💰ayako-katsumi💰](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%92%B0ayako-katsumi%F0%9F%92%B0%20[775363330905735178].html)
+* [#📚chizue-okamoto📚](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%93%9Achizue-okamoto%F0%9F%93%9A%20[775364259244539913].html)
+* [#📈elizabeth-walker📈](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%93%88elizabeth-walker%F0%9F%93%88%20[775363573752397834].html)
+* [#🎞kaeru-sasaki🎞](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%8E%9Ekaeru-sasaki%F0%9F%8E%9E%20[775363005936304159].html)
+* [#🍔kasumi-sato🍔](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%8D%94kasumi-sato%F0%9F%8D%94%20[775364284364226610].html)
+* [#👊kichiro-ryu👊](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%91%8Akichiro-ryu%F0%9F%91%8A%20[775364164108812298].html)
+* [#🎪mavis-locks🎪](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%8E%AAmavis-locks%F0%9F%8E%AA%20[775363969149698048].html)
+* [#🎾mayumi-takimura🎾](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%8E%BEmayumi-takimura%F0%9F%8E%BE%20[775363228824895499].html)
+* [#🧾ren-mitsurubi🧾](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%A7%BEren-mitsurubi%F0%9F%A7%BE%20[775363924279164939].html)
+* [#🎸ryōhō-rokkunrōru🎸](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%8E%B8ry%C5%8Dh%C5%8D-rokkunr%C5%8Dru%F0%9F%8E%B8%20[775364041442197506].html)
+* [#✅shinjitsu-shika✅](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%E2%9C%85shinjitsu-shika%E2%9C%85%20[775363068891758612].html)
+* [#🔎shitzu-rios🔎](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20[775363517863034882].html)
+* [#🏩ursa-lovelocke🏩](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%8F%A9ursa-lovelocke%F0%9F%8F%A9%20[775363381033041930].html)
+* [#🧛victor-ogden🧛](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%A7%9Bvictor-ogden%F0%9F%A7%9B%20[775362962780061737].html)
+* [#👘yasumi-namajimi👘](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%91%98yasumi-namajimi%F0%9F%91%98%20[775364198585729084].html)
+* [#☀yoshimura-tomatsu☀](https://sonic4999.github.io/DHSeason6Archive/Dorms/Danganronpa_%20Despair's%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20(KG)%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%E2%98%80yoshimura-tomatsu%E2%98%80%20[775363435503681587].html)
 
-Back to Home
+[Back to Home](https://sonic4999.github.io/DHSeason6Archive/Home)
