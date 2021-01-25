@@ -1,5 +1,4 @@
 # Despair's Horizon Season 6 Archive
-## All times are in EST.
 
 <img src="https://cdn.discordapp.com/attachments/782106320395436032/790250569859334153/S6.png" width="480">
 
