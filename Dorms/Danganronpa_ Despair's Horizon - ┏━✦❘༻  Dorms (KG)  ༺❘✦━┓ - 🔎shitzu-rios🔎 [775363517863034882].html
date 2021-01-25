@@ -1,0 +1,2806 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Danganronpa: Despair&#39;s Horizon - &#128270;shitzu-rios&#128270;</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
+.spoiler {
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image * {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 100%;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__reference-symbol {
+    grid-column: 1;
+    border-style: solid;
+    border-width: 2px 0 0 2px;
+    border-radius: 8px 0 0 0;
+    margin-left: 16px;
+    margin-top: 8px;
+}
+
+.chatlog__reference {
+    display: flex;
+    grid-column: 2;
+    margin-left: 1.2em;
+    margin-bottom: 0.25em;
+    font-size: 0.875em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-items: center;
+}
+
+.chatlog__reference-avatar {
+    border-radius: 50%;
+    height: 16px;
+    width: 16px;
+    margin-right: 0.25em;
+}
+
+.chatlog__reference-name {
+    margin-right: 0.25em;
+    font-weight: 600;
+}
+
+.chatlog__reference-link {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chatlog__reference-link:hover {
+    text-decoration: none;
+}
+
+.chatlog__reference-content > * {
+    display: inline;
+}
+
+.chatlog__reference-edited-timestamp {
+    margin-left: 0.25em;
+    font-size: 0.8em;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__attachment-container {
+    height: 40px;
+    width: 100%;
+    max-width: 520px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.chatlog__attachment-icon {
+    float: left;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.chatlog__attachment-icon > .a {
+    fill: #f4f5fb;
+    d: path("M50,935a25,25,0,0,1-25-25V50A25,25,0,0,1,50,25H519.6L695,201.32V910a25,25,0,0,1-25,25Z");
+}
+
+.chatlog__attachment-icon > .b {
+    fill: #7789c4;
+    d: path("M509.21,50,670,211.63V910H50V50H509.21M530,0H50A50,50,0,0,0,0,50V910a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50h0V191Z");
+}
+
+.chatlog__attachment-icon > .c {
+    fill: #f4f5fb;
+    d: path("M530,215a25,25,0,0,1-25-25V50a25,25,0,0,1,16.23-23.41L693.41,198.77A25,25,0,0,1,670,215Z");
+}
+
+.chatlog__attachment-icon > .d {
+    fill: #7789c4;
+    d: path("M530,70.71,649.29,190H530V70.71M530,0a50,50,0,0,0-50,50V190a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50Z");
+}
+
+.chatlog__attachment-filesize {
+    color: #72767d;
+    font-size: 12px;
+}
+
+.chatlog__attachment-filename {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__reference-symbol {
+    border-color: #4f545c;
+}
+
+.chatlog__reference {
+    color: #b5b6b8;
+}
+
+.chatlog__reference-link {
+    color: #b5b6b8;
+}
+
+.chatlog__reference-link:hover {
+    color: #ffffff;
+}
+
+.chatlog__reference-edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__attachment-container {
+    background-color: #2f3136;
+    border-color: #292b2f;
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/a445ff399e74272c96dcfc164193abea-A831A.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Danganronpa: Despair&#39;s Horizon</div>
+        <div class="preamble__entry">┏━✦❘༻  Dorms (KG)  ༺❘✦━┓ / &#128270;shitzu-rios&#128270;</div>
+
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/e8e0c32ac22001d397cbf08bc7ab91ec-3088A.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ImReallyScrewed#8206" data-user-id="578326021443420160" style="color: rgb(255,0,0)">Kev | ???</span>
+
+
+        <span class="chatlog__timestamp">09-Nov-20 09:21 AM</span>
+
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="775364421572100098" id="message-775364421572100098">
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/image0-8EAEC.png">
+                                        <img class="chatlog__attachment-thumbnail" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/image0-8EAEC.png" alt="Image attachment" title="Image: image0.png (441.9 KB)">
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/e8e0c32ac22001d397cbf08bc7ab91ec-3088A.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ImReallyScrewed#8206" data-user-id="578326021443420160" style="color: rgb(255,0,0)">Kev | ???</span>
+
+
+        <span class="chatlog__timestamp">11-Nov-20 11:45 AM</span>
+
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="776125455119548427" id="message-776125455119548427">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><em>Shitzu&#39;s dorm room. There&#39;s a single bed here, as shown in the picture. Other notable pieces of furniture include a desk and a dresser with a lamp on it. There is also a bookshelf. Multiple copies of clothes of whatever you wear is in the dresser and the lamp can be turned on and off like a normal lamp.</em>
+
+<em>On the desk is a cup of pens and pencils, as well as a stack of paper. There&#39;s also a journal. It seems you can write about things here. The desk has a trash can beside it as well. This desk should be a pretty good workplace.</em>
+
+<em>You seem to have a few items specifically tailored to your Ultimate:</em>
+- A magnifying glass.
+- (I would put journal here, but you already have one so...) A fancy pen. Much better than the ones provided.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">12-Nov-20 09:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="776637386125869116" id="message-776637386125869116">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">After ten thousand years of searching, 2000 nights, and 2000 days. Shitzu finally found his home. His casa. His hut. Shitzu&#39;s weakened body, his meek body suddenly reenergized, full of strength, Shitzu shot back up to his feet, a wide grin spread across his face he kicked the door to his room open and was greeted to....
+
+
+
+
+       Nirvanna.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/f86c34e117099c14a9e5a562aeafdc6f-590D3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Doogie#5280" data-user-id="498565246210932746" style="color: rgb(181,126,220)">Monarch of Brie</span>
+
+
+        <span class="chatlog__timestamp">12-Nov-20 09:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="776637533982425180" id="message-776637533982425180">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(( the extra effort of you putting it a bit away from the border for texts really just yes</span>
+
+                                <span class="chatlog__edited-timestamp" title="12-Nov-20 10:00 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/465087acb151fd644bf1a6ac02bd8a7d-02460.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Brandini21#4259" data-user-id="728274480073408562" style="">Brandini21</span>
+
+
+        <span class="chatlog__timestamp">12-Nov-20 09:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="776642266314833951" id="message-776642266314833951">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/465087acb151fd644bf1a6ac02bd8a7d-02460.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Brandini21#4259" data-user-id="728274480073408562" style="">Brandini21</span>
+
+
+        <span class="chatlog__timestamp">12-Nov-20 10:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="776645129393143819" id="message-776645129393143819">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu&#39;s wide grin slowly disappeared into a soft smile, his eyes scanned the pristine room. The details and positioning of the items were immaculate. Perfect. Neatly set up in the right spots in a symmetrical fashion. The room smelled like lavender to him. He felt the soothing aura of the room brush up against his body. Shitzu felt this sensation of warmness permeate around his body like the warm touch of his mother embracing him and keeping him as long as she could. It was..nice, juxtaposed to his current environment. The room served as his temporary place of solace.  Well, second place if his notepad counts-however, that high energy Shitzu of before dispersed in almost a blink of an eye. Shitzu just..stood there silently, arms resting at his side and eyes wide, lips flat. He stared into the abyss.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/465087acb151fd644bf1a6ac02bd8a7d-02460.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Brandini21#4259" data-user-id="728274480073408562" style="">Brandini21</span>
+
+
+        <span class="chatlog__timestamp">12-Nov-20 11:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="776657679728246834" id="message-776657679728246834">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><em>Life kept on going while he remained  standing there like a statue, that same expression still intact. Wide eyes and flat lips. His breath quiet..almost labored. Shtizu&#39;s mind swirled and swirled...yet nothing. Whatever he was trying to think about, simply didn&#39;t come up- why?..whY..wh-</em>  its ok...fine!  It&#39;s fine! I-Shitzu reached for his vest pocket on the left side of his chest. His hand trembled. He wasn&#39;t fidgety or scared.  He pulled out his notepad and trusty white pan but his hands trembled like they were tectonic plates. 
+
+&quot;H-H-Hmm..&quot;, that soft smile appeared again, reverting to his calm and lax expression, and he walked over to the desk he spotted when walking in and swept it clear from items and that disgusting journal? Who the fuck uses Journals nowadays? He sat down and rested his notepad on the white ply surface of the table, already flipped open and with something scribbled on it.</span>
+
+                                <span class="chatlog__edited-timestamp" title="13-Nov-20 09:50 AM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">13-Nov-20 08:22 AM</span>
+
+            <div class="chatlog__message " data-message-id="776799138896805918" id="message-776799138896805918">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;Finally....&quot; His breath began to get shaky, incoherent. Breathing out of his nose and mouth. &quot;I found it....&quot; Shitzu drew his slimy little hands close to the notepad and lifted it above his head like a prize painting. It was here!  
+
+
+
+    
+  A shitty little drawing of a hippo.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">13-Nov-20 10:53 AM</span>
+
+            <div class="chatlog__message " data-message-id="776837133343129681" id="message-776837133343129681">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><em>Shitzu lowered the drawing to eye level and took in the vibes that were radiating from it. He was enamored by it. Sucked. Entranced. The linework,  the r oundess, TWAS PERFECT!</em></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/87cf5b7b42153cef8a4e7ac88b0af174-DDE8A.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Sonic49#7171" data-user-id="229350299909881876" style="color: rgb(67,120,252)">Sonic49</span>
+
+
+        <span class="chatlog__timestamp">13-Nov-20 10:59 AM</span>
+
+            <div class="chatlog__message " data-message-id="776838569704423434" id="message-776838569704423434">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(i--</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/465087acb151fd644bf1a6ac02bd8a7d-02460.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Brandini21#4259" data-user-id="728274480073408562" style="">Brandini21</span>
+
+
+        <span class="chatlog__timestamp">13-Nov-20 10:59 AM</span>
+
+            <div class="chatlog__message " data-message-id="776838733876953088" id="message-776838733876953088">
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/Screenshot_20201113-095924_Photos-8B113.jpg">
+                                        <img class="chatlog__attachment-thumbnail" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/Screenshot_20201113-095924_Photos-8B113.jpg" alt="Image attachment" title="Image: Screenshot_20201113-095924_Photos.jpg (242.14 KB)">
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="⭐" title="⭐" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/2b50-412B1.png">
+                                <span class="chatlog__reaction-count">4</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="776838788516544572" id="message-776838788516544572">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(His mona Lisa<img class="emoji " alt="🥵" title="🥵" src="https://twemoji.maxcdn.com/2/72x72/1f975.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">13-Nov-20 11:03 AM</span>
+
+            <div class="chatlog__message " data-message-id="776839598894481429" id="message-776839598894481429">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><em>a single, glimmering tear streamed down his soft cheek. Sparkling down to his lap as it splashed beautifully.</em> 
+
+&quot;This...this is the one..&quot; <em>he said, his voice cracking and his lips quivering. Shitzu was trying his best to hold back the waterfall of incoming emotions.</em></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">13-Nov-20 11:13 AM</span>
+
+            <div class="chatlog__message " data-message-id="776842078587453486" id="message-776842078587453486">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu sighed in relief, flipping his notepad to a close and resting on the desk. He shot both of his arms ups and stretched, stretched, like he was coming out of hibernation.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="776843560557346856" id="message-776843560557346856">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu kicked his legs out in relief and leaned back further than he should&#39;ve. Balancing the chair with nothing but his weight. His eyes closed and mouth making random grunting noises of ecstasy. It was all but too late for him to realize his downfall. 
+
+Shitzu fell backward and smacked the back of his dome against the carpet with such force, it bounced off twice like a basketball, knocking him out on da spot.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">13-Nov-20 02:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="776888825582321684" id="message-776888825582321684">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Deep into his impromptu slumber, Shitzu was out like a baby. Snoring loudly and his hands and feet occasionally twitching. He looked kinda happy, even if he was...blowing some impressively large snot bubbles.  But He looked happy!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">13-Nov-20 02:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="776890628139253780" id="message-776890628139253780">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">His nap would be cut short for no reason other than Shitzu woke up!  Making a weird pig-like noise in the process.   &quot;Ah..what?&quot; Shitzu&#39;s eye shot open, his chest rising gently. He stared at the white ceiling with an agape mouth and wide eyes, looking almost shocked.
+
+
+&quot;Oh, right. I&#39;m here.&quot;</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="776891068053848085" id="message-776891068053848085">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu lifted his head off the ground with a pained groan, he saw his desk first with the notepad chilling there and traveled his way down to his feet being draped over the seat of the chair.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/465087acb151fd644bf1a6ac02bd8a7d-02460.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Brandini21#4259" data-user-id="728274480073408562" style="">Brandini21</span>
+
+
+        <span class="chatlog__timestamp">13-Nov-20 02:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="776892638053269554" id="message-776892638053269554">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(*His eyes traveled down to his dangling feet that were draped over</span>
+
+                                <span class="chatlog__edited-timestamp" title="13-Nov-20 02:40 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="776892750586576926" id="message-776892750586576926">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(This tupper shit not letting me edit kinda sucks ngl</span>
+
+                                <span class="chatlog__edited-timestamp" title="13-Nov-20 02:38 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/87cf5b7b42153cef8a4e7ac88b0af174-DDE8A.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Sonic49#7171" data-user-id="229350299909881876" style="color: rgb(67,120,252)">Sonic49</span>
+
+
+        <span class="chatlog__timestamp">13-Nov-20 02:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="776892836876124211" id="message-776892836876124211">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(this is why i dont tupper</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/c1aefe133fec3b15d38b39020a26b2b4-6DE09.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Royalcat08#6390" data-user-id="721911813632950335" style="color: rgb(246,205,139)">Royal || Axel Caron</span>
+
+
+        <span class="chatlog__timestamp">13-Nov-20 02:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="776893090820128808" id="message-776893090820128808">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">//^^</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/f86c34e117099c14a9e5a562aeafdc6f-590D3.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Doogie#5280" data-user-id="498565246210932746" style="color: rgb(181,126,220)">Monarch of Brie</span>
+
+
+        <span class="chatlog__timestamp">13-Nov-20 02:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="776893170691735603" id="message-776893170691735603">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(( ❌if you want to delete something and redo it 
+(( it’s tedious but it’s there</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/87cf5b7b42153cef8a4e7ac88b0af174-DDE8A.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Sonic49#7171" data-user-id="229350299909881876" style="color: rgb(67,120,252)">Sonic49</span>
+
+
+        <span class="chatlog__timestamp">13-Nov-20 02:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="776893250581168139" id="message-776893250581168139">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(i mean yeah but just not tuppering is much faster</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/465087acb151fd644bf1a6ac02bd8a7d-02460.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Brandini21#4259" data-user-id="728274480073408562" style="">Brandini21</span>
+
+
+        <span class="chatlog__timestamp">13-Nov-20 02:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="776894158882734100" id="message-776894158882734100">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(Or you could let your  grammatical mistakes stay and call it &#39;Art&#39;<img class="emoji " alt="waltersmile" title="waltersmile" src="https://cdn.discordapp.com/emojis/753629528517115928.png">  or whatever.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="776894174834327583" id="message-776894174834327583">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(A gestalt</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="776894359172939776" id="message-776894359172939776">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(Schrodinger&#39;s grammar</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">13-Nov-20 02:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="776899040474300457" id="message-776899040474300457">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu rolled off his seat and onto all fours, somewhat out of it due to concussing himself.  His breathed labor and his consciousness shifting in and out of reality. Shitzu managed to maneuver his body just enough to a crossed leg sitting position, resting his back against the front of the mattress for added support.
+
+&quot;Frick, that wasn&#39;t as funny as I thought it would be.&quot; Shitzu sniggered for a nano-second before wincing in pain immediately. &quot;Oof, ow, no bueno.&quot;</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/465087acb151fd644bf1a6ac02bd8a7d-02460.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Brandini21#4259" data-user-id="728274480073408562" style="">Brandini21</span>
+
+
+        <span class="chatlog__timestamp">13-Nov-20 03:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="776909055305449482" id="message-776909055305449482">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(OH FOR FUCKS SAKE</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="776909114293878784" id="message-776909114293878784">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(Gotta delete this hoe</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/465087acb151fd644bf1a6ac02bd8a7d-02460.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Brandini21#4259" data-user-id="728274480073408562" style="">Brandini21</span>
+
+
+        <span class="chatlog__timestamp">13-Nov-20 04:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="776918608198369300" id="message-776918608198369300">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(*Breath labored</span>
+
+                                <span class="chatlog__edited-timestamp" title="13-Nov-20 04:17 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">13-Nov-20 04:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="776922697207906314" id="message-776922697207906314">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu whacked himself on the cheeks and stood upright, attempting to pump himself up! Sadly..his feet got tingly and he collapsed onto the bed, snow angel style.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">13-Nov-20 04:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="776925673880158258" id="message-776925673880158258">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;Ehh~&quot; Shitzu groaned, his mind feeling woozy from the whacky blow to his head. 
+&quot;Not an ideal way to spend the rest of your day..&quot; Shitzu thought to himself as he mewled</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">13-Nov-20 04:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="776927832168857641" id="message-776927832168857641">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><em>While moaning away his pains, Shizu analyzed the ceiling like a famous painting. His inquisitive eyes, staring holes into the pasty ceiling.</em>
+
+&quot;Hmmm....AH!&quot; <em>Shitzu&#39;s narrow eyes opened up to an epiphany! The ceiling wasn&#39;t no normal ceiling-nono! It was a POPCORN CEILING.</em></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="776928090202832917" id="message-776928090202832917">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;The HOST IS BROKE LMAOOO<img class="emoji " alt="🥵" title="🥵" src="https://twemoji.maxcdn.com/2/72x72/1f975.png"><img class="emoji " alt="🥵" title="🥵" src="https://twemoji.maxcdn.com/2/72x72/1f975.png"><img class="emoji " alt="🥵" title="🥵" src="https://twemoji.maxcdn.com/2/72x72/1f975.png"><img class="emoji " alt="🥵" title="🥵" src="https://twemoji.maxcdn.com/2/72x72/1f975.png"><img class="emoji " alt="🥵" title="🥵" src="https://twemoji.maxcdn.com/2/72x72/1f975.png"><img class="emoji " alt="🥵" title="🥵" src="https://twemoji.maxcdn.com/2/72x72/1f975.png"><img class="emoji " alt="🥵" title="🥵" src="https://twemoji.maxcdn.com/2/72x72/1f975.png"><img class="emoji " alt="🥵" title="🥵" src="https://twemoji.maxcdn.com/2/72x72/1f975.png"><img class="emoji " alt="🥵" title="🥵" src="https://twemoji.maxcdn.com/2/72x72/1f975.png"><img class="emoji " alt="🥵" title="🥵" src="https://twemoji.maxcdn.com/2/72x72/1f975.png"><img class="emoji " alt="🥵" title="🥵" src="https://twemoji.maxcdn.com/2/72x72/1f975.png"><img class="emoji " alt="🥵" title="🥵" src="https://twemoji.maxcdn.com/2/72x72/1f975.png"><img class="emoji " alt="🥵" title="🥵" src="https://twemoji.maxcdn.com/2/72x72/1f975.png"><img class="emoji " alt="👊" title="👊" src="https://twemoji.maxcdn.com/2/72x72/1f44a.png"><img class="emoji " alt="👊" title="👊" src="https://twemoji.maxcdn.com/2/72x72/1f44a.png"><img class="emoji " alt="👊" title="👊" src="https://twemoji.maxcdn.com/2/72x72/1f44a.png"><img class="emoji " alt="👊" title="👊" src="https://twemoji.maxcdn.com/2/72x72/1f44a.png"><img class="emoji " alt="👊" title="👊" src="https://twemoji.maxcdn.com/2/72x72/1f44a.png"><img class="emoji " alt="👊" title="👊" src="https://twemoji.maxcdn.com/2/72x72/1f44a.png"><img class="emoji " alt="👊" title="👊" src="https://twemoji.maxcdn.com/2/72x72/1f44a.png"><img class="emoji " alt="👊" title="👊" src="https://twemoji.maxcdn.com/2/72x72/1f44a.png"><img class="emoji " alt="👊" title="👊" src="https://twemoji.maxcdn.com/2/72x72/1f44a.png">&quot; Is what Shitzu would&#39;ve to say but his face felt numb and hard to move as if he got a stroke.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">13-Nov-20 06:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="776953125470732350" id="message-776953125470732350">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu kipped up to his feet after sinking into his bed for an eternity with a relatively smooth landing, although he got a massive headrush. Shitzu was a-ok. Mostly..a-ok.
+
+&quot;GOSH!&quot; Shitzu furiously shook his head like a dog and smacked his pale cheeks to bring back some life to em&#39;. He looked at</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="776953829047402516" id="message-776953829047402516">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">The desk and scanned all the funny items on it: his notepad, trusty white pen, and a.....magnifying glass..? W-what the fuck.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="776955589350653962" id="message-776955589350653962">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu cocked his head curiously and drew himself close to his desk and picked up the magnifying glass and inspected it. Licking it. Smelling it. Nibbling on it.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">13-Nov-20 07:00 PM</span>
+
+            <div class="chatlog__message " data-message-id="776959624363769867" id="message-776959624363769867">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><em>Shitzu sucked on it like a lollipop and pulled it out of his mouth. Saliva dripping off the Magnifier and a warm smile slapped on his face. &quot;Cool, I&#39;m sure I&#39;ll need this.&quot; Shitzu tucked in the magnifying neatly inside of his coat, alongside the feet magazine.</em></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/465087acb151fd644bf1a6ac02bd8a7d-02460.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Brandini21#4259" data-user-id="728274480073408562" style="">Brandini21</span>
+
+
+        <span class="chatlog__timestamp">13-Nov-20 07:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="776960098173583400" id="message-776960098173583400">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(That he picked up from the luggage-room<img class="emoji " alt="I_am_looking_away" title="I_am_looking_away" src="https://cdn.discordapp.com/emojis/757585788488646677.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">13-Nov-20 07:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="776962703930556447" id="message-776962703930556447">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;Alright I think I got everything..&quot; Shitzu scanned his vicinity before leaving his room and out to the cold, cold...world or airport. Or both!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">14-Nov-20 02:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="777260355122495518" id="message-777260355122495518">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu returned to his room, somewhat exhausted from the constant non-stop walking in his search for the person the stuttering Giant(Ursa) described. 
+ Though he paid no mind to his weakening body, wiping away sweat from his forehead and washing down the exhaustion-refueled him. But what now? Shitzu pondered, scribbling on his notepad as he paced around in circles. Thinking about what to do next!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="777262093518503986" id="message-777262093518503986">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">it was pretty obvious, someone with both of their eyes sewed shut could tell what&#39;s next.  Shitzu plopped himself on his desk and began to furiously write on his notepad, flipping pages frequently and dramatically. His posture was hunched over. His eyes focusing on the pages with sweat rolling over them and staining the white page. Unphased as they remained open. Shitzu wrote at a speed so fast. Smoke started to rise from the tip of his pen from the sheer velocity his hand was moving but- it was done.........Shitzu had come to a shocking conclusion.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="777262991384248330" id="message-777262991384248330">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">That he was a pretty banging artist tbh.</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/Screenshot_20201114-140455_Photos-4465F.jpg">
+                                        <img class="chatlog__attachment-thumbnail" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/Screenshot_20201114-140455_Photos-4465F.jpg" alt="Image attachment" title="Image: Screenshot_20201114-140455_Photos.jpg (223.39 KB)">
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="⭐" title="⭐" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/2b50-412B1.png">
+                                <span class="chatlog__reaction-count">8</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">14-Nov-20 03:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="777271174714490931" id="message-777271174714490931">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu marveled at this Victorian piece of art, he held up high and proud. A small smile plastered on that handsome mug of his and two single tears streaming ever so slowly down his pale cheeks.
+
+&quot;It&#39;s so photo realistic..&quot;</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="777271176002666527" id="message-777271176002666527">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">He said, shuddering the entire time.  Overwhelmed by his greatness.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">14-Nov-20 04:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="777282813236871228" id="message-777282813236871228">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu rested the notepad on the desk and analyzed it, his train of thought chugging in circles trying to hypothesize..anything! But what? Who could exactly look like the image he DREW.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">14-Nov-20 05:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="777294994393792532" id="message-777294994393792532">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">a flashbulb went off in his head..that&#39;s right! He knew exactly who it was! It&#39;s.. Somebody!</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="777295139273179136" id="message-777295139273179136">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu jumped off his chair and dramatically left his room in search of somebody.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/590ff026a47b4181d2a4647bb33f7de5-AC471.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="a n g i e#7700" data-user-id="543853525038530561" style="color: rgb(62,123,147)">dead</span>
+
+
+        <span class="chatlog__timestamp">16-Nov-20 04:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="778003919167160340" id="message-778003919167160340">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><em>A piece of paper has been slid under your door.</em>
+
+<strong>”Hello. Me and Elizabeth Walker decided to host a sleepover (party?) to make everyone happier during this motive. If you would like to attend, please grab your bedding and make your way towards the lounge. Everyone is invited. - Kichiro Ryu.</strong>
+
+<em>(( After this was sent, if this message is a few hours old and you just saw it, you probably would’ve missed it. Sorry. ))</em>
+
+<em>You then hear a knock on your door. He wants someone to actually see it.</em></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">17-Nov-20 12:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="778306642122637413" id="message-778306642122637413">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">A hulking demon lingered near Shitzu&#39;s bedroom. Wrapped in blankets and groaning. It was Shitzu. He had stolen Date&#39;s blankets for himself but-not for any malicious reasons. He just borrowed them.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="778306922402414602" id="message-778306922402414602">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu waddled inside his room.  Stumbling and rolling around till he picked up his sheets and walked out of his room and headed towards Date&#39;s. Bring his own bedsheets with him to maybe form a pillow fort or something.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Nov-20 12:38 AM</span>
+
+            <div class="chatlog__message " data-message-id="779943876681138206" id="message-779943876681138206">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu kicked the door to his room open. Dropped a funny piece of clothing and walked out</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="779945028809523201" id="message-779945028809523201">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu returned to pick up something and walked back out.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="779945153984462880" id="message-779945153984462880">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;wait, fuck&quot; Shitzu waddled back in and dropped said item that he picked up.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="779945378170011671" id="message-779945378170011671">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;time to go.&quot;  Shitzu said, taking one step forward and tripping.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="779945544969617429" id="message-779945544969617429">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;Owie :(&quot; Shitzu said, rubbing his toe.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="779945836331008033" id="message-779945836331008033">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;My...toe hurts.&quot; Shitzu absently mindedly stared at his toe. Drool trickling down his lip. It looked kinda good ngl.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="779945919898583040" id="message-779945919898583040">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">He drew his mouth close to his toe and tried licking it.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="779946803314294794" id="message-779946803314294794">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">His tongue was so close yet it couldn&#39;t even touch his shoe. He leaned his torso forward and finally.. The entire tip of his foot was covered by his mouth as he munched on it.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/87cf5b7b42153cef8a4e7ac88b0af174-DDE8A.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Sonic49#7171" data-user-id="229350299909881876" style="color: rgb(67,120,252)">Sonic49</span>
+
+
+        <span class="chatlog__timestamp">22-Nov-20 12:50 AM</span>
+
+            <div class="chatlog__message " data-message-id="779946849741963264" id="message-779946849741963264">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(what the fuck</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Nov-20 01:29 AM</span>
+
+            <div class="chatlog__message " data-message-id="779956733563895828" id="message-779956733563895828">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">after a good suckling session. He stood up and walked out of his room. Feeling satisfied.</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#127484;" title="&#127484;" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/1f1fc-E17AB.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#127481;" title="&#127481;" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/1f1f9-24F03.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#127467;" title="&#127467;" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/1f1eb-E45E1.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="Fukt" title="Fukt" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/755497698563457024-D9F52.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/a7f2975aea11cadc1a56daef9a815216-83CA7.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="CronchyTurtle#8008" data-user-id="486181655837671425" style="color: rgb(255,0,0)">! Cronch | Megumi | Lewis</span>
+
+
+        <span class="chatlog__timestamp">22-Nov-20 09:06 AM</span>
+
+            <div class="chatlog__message " data-message-id="780071628024315914" id="message-780071628024315914">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(I am greatly disturbed</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/465087acb151fd644bf1a6ac02bd8a7d-02460.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Brandini21#4259" data-user-id="728274480073408562" style="">Brandini21</span>
+
+
+        <span class="chatlog__timestamp">22-Nov-20 06:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="780206525804576778" id="message-780206525804576778">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(Why<img class="emoji " alt="👊" title="👊" src="https://twemoji.maxcdn.com/2/72x72/1f44a.png"><img class="emoji " alt="😔" title="😔" src="https://twemoji.maxcdn.com/2/72x72/1f614.png"> man loves sucking his toes</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Nov-20 06:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="780220290021851147" id="message-780220290021851147">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu en route to his room  was stuck in thought. Rubbing both of his cheeks as he paced towards his room. Shitzu was so perplexed at everyone&#39;s, willingness say for a few, to play off their inevitable death in front of an execution like it was nothing. Perhaps they were coping. Maybe they&#39;re crazy. It didn&#39;t matter to him.
+
+
+&quot;Ehhhhh..how many times does Bearman want us to be there for anyway? Till one of us remains? Or a few? Or all of us? Are we all dead? Am I dead?&quot; Shitzu paused, his eyes widened and his hands firmly squishing his cheeks. Shitzu had a bruh moment. 
+
+&quot;What if I did die?&quot; Shitzu slowly turned his gaze to the white wall standing before him. 
+
+&quot;...&quot; A sly smile crept in Shitzu&#39;s face before  he bashed his skull against the thick wall with enough force to crack it. Of course, Shitzu being made out of parchment, The only thing that did crack was his forehead.  
+
+His hat fell beside his feet graciously.
+Blood started to spurt from his forehead, trickling down his face as a crimson mask coated his entire face. Panting in heavy, short breaths through his nose. Shitzu stared at the bloody floor beneath him with a soft smile. Staining the floor with blood as it leaked from his forehead like water droplets. 
+
+&quot;Of course not, of course. I just needed to wake myself up..&quot; Shitzu pushed himself off the wall and stumbled slightly, quivering.  Staring at the ceiling with raspy breaths escaping through his mouth and nose.  Dummy, might&#39;ve opened himself too hard. What for? What rhyme or reason did this spontaneous burst of self-harm meant? Nothing. Shitzu just felt like it.
+
+
+
+He leaned forward to pick up his hat and drunkenly walked back to his room. Preventing any blood from leaking from his forehead by simply pressing against it with two index fingers.  Leaving a bloody stain on the wall and nothing else.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="780220347097808906" id="message-780220347097808906">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu shimmied into his room.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">22-Nov-20 11:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="780295089045504030" id="message-780295089045504030">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu had spent the last several hours inside of his bathtub laying down with his feet kicked up on the bathtub faucet, his bloodied hands placed behind the back of his dome. He had fixedly laid his eyes on the shimmering marble ceiling for longer than he should with his lips flat and a frown.
+
+&quot;Fuck me, why am I so worked up over a dead body-oop.&quot; Shitzu raised his head up slightly in surprise.  placing his hand on his mouth as if though he was stifling a gasp. His crimson face was all dried up with blood.
+&quot;Said a bad word. Sorry..&quot; He said apologetically,  Speaking to thin air. Shitzu rested his head back against his hands. Smiling softly. 
+
+&quot;Still, what a weird bunch. Wonder what&#39;s the point of this. I haven&#39;t talked to many folks. Not out of boredom. But outta FEAR! Can you believe it!&quot; Shitzu briskly lifted his head with a pained groan,  shifting his head and left and right with a wide smile to a non-existent audience.  His wide smile falling apart into a quivering. His usual cold, wide eyes disappearing. A quivering sad over Shitzu&#39;s face as he sat up with his legs crossed and his hands firmly placed on his thighs. 
+
+
+&quot;Sheesh~ I feel so bad,&quot; Shitzu said in a broken voice, looking down with his eyes closed. Quietly sitting in the middle of his tub.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/465087acb151fd644bf1a6ac02bd8a7d-02460.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Brandini21#4259" data-user-id="728274480073408562" style="">Brandini21</span>
+
+
+        <span class="chatlog__timestamp">23-Nov-20 01:31 AM</span>
+
+            <div class="chatlog__message " data-message-id="780319601221173318" id="message-780319601221173318">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(Woke up and realized I  didn&#39;t correct a grammar error:  *a quivering sad frown</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">23-Nov-20 12:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="780478197480423464" id="message-780478197480423464">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu spent the entire night with his  head bowed, at some point he sorta..just slumped into an ass up position. His hat tipped over the snoring sleeping beauty&#39;s face. &quot;MmmMh...hm?&quot; Shitzu&#39;s baggy eyes fluttered open slowly. It took him a second of rubbing his face on the surface of his dry bathtub to realize where he was. &quot;Oh? Hmm~&quot; for some reason he kissed his bathtub; doing a nice and solid 1/3 of a push-up before springing himself up to his feet cheerfully.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">23-Nov-20 12:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="780482507412865055" id="message-780482507412865055">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu checked himself in the mirror from the comfort of the bathtub. Stroking his chin and poring over his dried-up bloody face with an inquisitive gaze.  
+
+
+&quot;I don&#39;t remember what I did to myself and I&#39;m pretty sure..&quot; Shitzu looked up to his hairline, pushing his scruffy hair back to reveal a small dried up gash at the entrance of his hairline. 
+
+&quot;Oof.&quot; Shitzu grimaced. &quot;Looks lovely.&quot; He removed his hand from his messy hair, letting it enshroud his small gash before shaking his head gently and stepping out of the tub to wash his face.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">23-Nov-20 01:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="780494717690314814" id="message-780494717690314814">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu cleansed and rubbed his face with a wet towel, laying it aside besides the sink. He stared himself in the mirror with water droplets dripping from his face with a warm smile and wide eyes.  Unbeknownst to Shitzu, his notepad slipped out of his vest pocket and landed on the white countertop surface. Revealing a poorly made drawing of sorts. 
+
+&quot;Hm? OH!&quot; Shitzu directed his vision to the well-thumbed notepad of his and planted his ooglers on the drawing, he was aghast.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">23-Nov-20 03:14 PM</span>
+
+            <div class="chatlog__message " data-message-id="780526709053194251" id="message-780526709053194251">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">The memories came tumbling back to Shitzu. The reason why he bashed his skull onto hard wall. Why he was having existential dread..it was because of this:</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/Screenshot_20201123-141002_Photos-15B30.jpg">
+                                        <img class="chatlog__attachment-thumbnail" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/Screenshot_20201123-141002_Photos-15B30.jpg" alt="Image attachment" title="Image: Screenshot_20201123-141002_Photos.jpg (141.7 KB)">
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="umstare" title="umstare" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/747999136632012841-D61AB.png">
+                                <span class="chatlog__reaction-count">3</span>
+                            </div>
+                    </div>
+            </div>
+            <div class="chatlog__message " data-message-id="780526814933549106" id="message-780526814933549106">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;Man, this drawing sucks :(&quot;</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">23-Nov-20 06:14 PM</span>
+
+            <div class="chatlog__message " data-message-id="780572050980470845" id="message-780572050980470845">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;Oh well :(&quot; Shitzu sighed and left his room. Off to a new adventure.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">26-Nov-20 04:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="781638689100529715" id="message-781638689100529715">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Shitzu somehow ended up in his room.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="781638730078355477" id="message-781638730078355477">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">He breathed in air.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="781638766598815764" id="message-781638766598815764">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">and Exhaled</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="781638807702732861" id="message-781638807702732861">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">In-haled</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="781638852866867240" id="message-781638852866867240">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Exhaled</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="781639578494304266" id="message-781639578494304266">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;Man, I sure love air :)&quot;</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="781639638573776936" id="message-781639638573776936">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;Oxygen is Awesome</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="781639682399272991" id="message-781639682399272991">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;All my homies love oxygen&quot;</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="781639718945292338" id="message-781639718945292338">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;I stan oxygen&quot;</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="⭐" title="⭐" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/2b50-412B1.png">
+                                <span class="chatlog__reaction-count">8</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/87cf5b7b42153cef8a4e7ac88b0af174-DDE8A.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Sonic49#7171" data-user-id="229350299909881876" style="color: rgb(67,120,252)">Sonic49</span>
+
+
+        <span class="chatlog__timestamp">26-Nov-20 04:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="781639803342553129" id="message-781639803342553129">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">(peak rp</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">26-Nov-20 05:01 PM</span>
+
+            <div class="chatlog__message " data-message-id="781640718845739030" id="message-781640718845739030">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;Fuck Carbon Monoxide<img class="emoji " alt="👊" title="👊" src="https://twemoji.maxcdn.com/2/72x72/1f44a.png"><img class="emoji " alt="😤" title="😤" src="https://twemoji.maxcdn.com/2/72x72/1f624.png">&quot;</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="781642265822101524" id="message-781642265822101524">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;Like why does it exist? Just for Stoves to stay on and to kill us?&quot; Like hey man...no-oop!&quot; Shitzu covered his mouth in shock. He let himself slip and say a bad word. He was ashamed. Embarrassed. Therefore: &quot;Sad...<img class="emoji " alt="👊" title="👊" src="https://twemoji.maxcdn.com/2/72x72/1f44a.png"><img class="emoji " alt="😔" title="😔" src="https://twemoji.maxcdn.com/2/72x72/1f614.png">&quot; 
+
+
+Shitzu did the renegade as punishment.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/644fd5886642e3aab4b9efd60394be99-3E5D0.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Shitzu Rios#0000" data-user-id="776637383666827285" style="">Shitzu Rios</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">26-Nov-20 06:59 PM</span>
+
+            <div class="chatlog__message " data-message-id="781670601860448297" id="message-781670601860448297">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;Trans people are cool&quot;</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/465087acb151fd644bf1a6ac02bd8a7d-02460.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Brandini21#4259" data-user-id="728274480073408562" style="">Brandini21</span>
+
+
+        <span class="chatlog__timestamp">30-Nov-20 02:51 PM</span>
+
+            <div class="chatlog__message " data-message-id="783057636115349544" id="message-783057636115349544">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><em>Shitzu teleported back to his room and proceeded to chug an entire bottle of advil.</em></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783057675663179796" id="message-783057675663179796">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;wow! Awesome, I love pills&quot;</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783057924670488657" id="message-783057924670488657">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;You know what else is awesome?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="783057963363336232" id="message-783057963363336232">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">&quot;The&#160;Opium Wars&#160;were two wars waged between the&#160;Qing dynasty&#160;and Western powers in the mid-19th century. The&#160;First Opium War, fought in 1839–1842 between the Qing and Great Britain, was triggered by the dynasty&#39;s campaign against the British merchants who sold opium to Chinese merchants. The&#160;Second Opium War&#160;was fought between the Qing and Britain and France, 1856–1860. In each war, the European forces used modern military technology to easily defeat the Qing forces, and compelled the government to grant favorable tariffs, trade concessions, and territory.&quot;</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/65cc296c31d78597c0f91a99a95bd3cc-105A5.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Ren Mitsurubi#0000" data-user-id="776637383666827285" style="">Ren Mitsurubi</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">02-Dec-20 10:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="783897238375366687" id="message-783897238375366687">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><em>He slid a note under the door.</em> 
+
+<em>Earlier today two pets were killed, a tanuki belonging to Kaeru and a hawk belonging to Ayako. The leading suspect for the death of the hawk and confirmed to have killed the tanuki is Alya. Please be careful going forward, and keep any pets you have under supervision, and it would be advised to not act irrationally until the situation is resolved.</em></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/b196813467382a018439104b9d0033c3-E71C7.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Laplace - Elkian Network#8290" data-user-id="221760256697565185" style="color: rgb(2,2,2)">El-Senpai kills everyone</span>
+
+
+        <span class="chatlog__timestamp">10-Dec-20 03:19 AM</span>
+
+            <div class="chatlog__message " data-message-id="786507452015312936" id="message-786507452015312936">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><div class="quote">A book about multiple overlapping mysteries has been left here by someone. There&#39;s a piece of paper sticking out of one of the pages.
+</div>&gt; 
+<div class="quote"><em>&quot;If I were you, I would investigate the people around. Find out what I can, and use that knowledge as assets moving forward. This begs the question, are you willing enough to do that?&quot;</em></div></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/87cf5b7b42153cef8a4e7ac88b0af174-DDE8A.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Sonic49#7171" data-user-id="229350299909881876" style="color: rgb(67,120,252)">Sonic49</span>
+
+
+        <span class="chatlog__timestamp">20-Dec-20 05:16 PM</span>
+
+            <div class="chatlog__message " data-message-id="790341850074185728" id="message-790341850074185728">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><div class="quote"><em>This room is now locked.</em></div></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="Danganronpa_%20Despair%27s%20Horizon%20-%20%E2%94%8F%E2%94%81%E2%9C%A6%E2%9D%98%E0%BC%BB%20%20Dorms%20%28KG%29%20%20%E0%BC%BA%E2%9D%98%E2%9C%A6%E2%94%81%E2%94%93%20-%20%F0%9F%94%8Eshitzu-rios%F0%9F%94%8E%20%5B775363517863034882%5D.html_Files/87cf5b7b42153cef8a4e7ac88b0af174-DDE8A.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Sonic49#7171" data-user-id="229350299909881876" style="color: rgb(67,120,252)">Sonic49</span>
+
+
+        <span class="chatlog__timestamp">24-Dec-20 11:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="791886027094622228" id="message-791886027094622228">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><em>A card has been slipped underneath the door. On the front of it is an okay drawing of a Christmas tree and the words &#39;Merry Christmas!&#39; The inside has a couple of little Christmas-related drawings in it and also has a little note:</em>
+
+<div class="quote">&quot;I know you&#39;re dead and we didn&#39;t talk at all, but... honestly, I kinda wish we talked a bit more. Regardless, wherever you are, Merry Christmas and happy holidays!&quot;
+- Mayumi</div></span>
+
+                                <span class="chatlog__edited-timestamp" title="25-Dec-20 12:03 AM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 95 message(s)</div>
+</div>
+
+</body>
+
+</html>
