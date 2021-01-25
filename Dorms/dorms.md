@@ -1,7 +1,5 @@
 # Season 6 - Dorms
 
-<img src="https://cdn.discordapp.com/attachments/782106320395436032/790250569859334153/S6.png" width="480">
-
 All dorms:
 * #🎭aku🎭
 * #🎙alicia-lake🎙
@@ -25,3 +23,5 @@ All dorms:
 * #🧛victor-ogden🧛
 * #👘yasumi-namajimi👘
 * #☀yoshimura-tomatsu☀
+
+Back to Home
