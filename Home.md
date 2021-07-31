@@ -4,10 +4,10 @@
 
 All Categories:
 
-* [Dorms](https://sonic4999.github.io/DH-Season-6-Archive/Dorms/dorms)
-* [Pilot's Hotel](https://sonic4999.github.io/DH-Season-6-Archive/Hotel/hotel)
-* [Terminal A](https://sonic4999.github.io/DH-Season-6-Archive/TerminalA/terminala)
-* [Outside](https://sonic4999.github.io/DH-Season-6-Archive/Outside/outside)
-* [Terminal B/C](https://sonic4999.github.io/DH-Season-6-Archive/TerminalBC/terminalbc)
-* [Terminal D](https://sonic4999.github.io/DH-Season-6-Archive/TerminalD/terminald)
-* [Terminal E](https://sonic4999.github.io/DH-Season-6-Archive/TerminalE/terminale)
+* [Dorms](https://astrea49.github.io/DH-Season-6-Archive/Dorms/dorms)
+* [Pilot's Hotel](https://astrea49.github.io/DH-Season-6-Archive/Hotel/hotel)
+* [Terminal A](https://astrea49.github.io/DH-Season-6-Archive/TerminalA/terminala)
+* [Outside](https://astrea49.github.io/DH-Season-6-Archive/Outside/outside)
+* [Terminal B/C](https://astrea49.github.io/DH-Season-6-Archive/TerminalBC/terminalbc)
+* [Terminal D](https://astrea49.github.io/DH-Season-6-Archive/TerminalD/terminald)
+* [Terminal E](https://astrea49.github.io/DH-Season-6-Archive/TerminalE/terminale)
