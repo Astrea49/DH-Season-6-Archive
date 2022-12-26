@@ -4,10 +4,10 @@
 
 All Categories:
 
-* [Dorms](https://astrea49.github.io/DH-Season-6-Archive/Dorms/dorms)
-* [Pilot's Hotel](https://astrea49.github.io/DH-Season-6-Archive/Hotel/hotel)
-* [Terminal A](https://astrea49.github.io/DH-Season-6-Archive/TerminalA/terminala)
-* [Outside](https://astrea49.github.io/DH-Season-6-Archive/Outside/outside)
-* [Terminal B/C](https://astrea49.github.io/DH-Season-6-Archive/TerminalBC/terminalbc)
-* [Terminal D](https://astrea49.github.io/DH-Season-6-Archive/TerminalD/terminald)
-* [Terminal E](https://astrea49.github.io/DH-Season-6-Archive/TerminalE/terminale)
+* [Dorms](https://astreatss.github.io/DH-Season-6-Archive/Dorms/dorms)
+* [Pilot's Hotel](https://astreatss.github.io/DH-Season-6-Archive/Hotel/hotel)
+* [Terminal A](https://astreatss.github.io/DH-Season-6-Archive/TerminalA/terminala)
+* [Outside](https://astreatss.github.io/DH-Season-6-Archive/Outside/outside)
+* [Terminal B/C](https://astreatss.github.io/DH-Season-6-Archive/TerminalBC/terminalbc)
+* [Terminal D](https://astreatss.github.io/DH-Season-6-Archive/TerminalD/terminald)
+* [Terminal E](https://astreatss.github.io/DH-Season-6-Archive/TerminalE/terminale)
